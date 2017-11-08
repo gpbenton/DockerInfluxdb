@@ -2,19 +2,12 @@ FROM i386/alpine:latest
 
 ENV INFLUXD_OPTS= INFLUXD_VERSION=1.3.7 ARCH=i386
 
-WORKDIR /tmp
-
-RUN apk --update upgrade && \ 
-    apk add wget ca-certificates && \
-    update-ca-certificates && \
-    rm -rf /var/cache/apk/* && \
-    wget https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz
-
-ADD influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz /opt
+ADD  https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz /opt/
 
 WORKDIR /usr/bin
 
-RUN mv /opt/influxdb-* /opt/influxdb && \
+RUN ls -al /opt && \
+    mv /opt/influxdb-* /opt/influxdb && \
     ln -s /opt/influxdb/usr/bin/influx && \
     ln -s /opt/influxdb/usr/bin/influxd && \
     ln -s /opt/influxdb/usr/bin/influx_inspect && \
