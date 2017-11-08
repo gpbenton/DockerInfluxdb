@@ -4,16 +4,20 @@ ENV INFLUXD_OPTS= INFLUXD_VERSION=1.3.7 ARCH=i386
 
 ADD  https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz /opt/
 
+WORKDIR /opt
+
+RUN tar xvfz influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz
+
 WORKDIR /usr/bin
 
-RUN ls -al /opt && \
+RUN rm /opt/influxdb-*.tar.gz && \
     mv /opt/influxdb-* /opt/influxdb && \
     ln -s /opt/influxdb/usr/bin/influx && \
     ln -s /opt/influxdb/usr/bin/influxd && \
     ln -s /opt/influxdb/usr/bin/influx_inspect && \
     ln -s /opt/influxdb/usr/bin/influx_stress && \
-    ln -s /opt/influxdb/usr/bin/influx_tsm && \
-    rm -f /tmp/influxdb-*.tar.gz
+    ln -s /opt/influxdb/usr/bin/influx_tsm
+
 
 # Configuration files & database
 VOLUME /etc/influxdb /var/lib/influxdb
