@@ -1,5 +1,5 @@
 # DockerInfluxdb
-Creates a docker container from Influxdb Source files
+Creates a docker container from Influxdb binary tar files
 
 I was repurposing a 386 based PC, and wanted to run Influxdb to store history for my home automation sensors.
 
