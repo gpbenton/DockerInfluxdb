@@ -1,1 +1,1 @@
-docker build --rm -t influxdb:1.3.7 .
+docker build --rm -t influxdb:1.3.8 .
