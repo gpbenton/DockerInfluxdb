@@ -1,6 +1,6 @@
 FROM i386/alpine:latest
 
-ENV INFLUXD_OPTS= INFLUXD_VERSION=1.6.4 ARCH=i386
+ENV INFLUXD_OPTS= INFLUXD_VERSION=1.7.0 ARCH=i386
 
 ADD  https://dl.influxdata.com/influxdb/releases/influxdb-${INFLUXD_VERSION}_linux_${ARCH}.tar.gz /opt/
 
